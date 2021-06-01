@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ecommerce">
+    <class name="com.ecommerce.Teacher" table="teacher">
+        <id name="ID" type="int" column="ID">
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string" column="name"/>
+        <property name="age" type="int" column="age"/>
+       
+    
+ <set name = "student" cascade="all" lazy="true">
+		         <key column = "teacher_ID"/>
+		         <one-to-many class="Student"/>
+      		</set>
+        
+         <set name="subjects" cascade="all" lazy="true">  
+                <key column="teacher_ID"></key>  
+                 <one-to-many class="com.ecommerce.Subjects"/>
+          </set> 
+          
+            
+          
+         <set name="classes" cascade="all" lazy="true">  
+                <key column="teacher_ID"></key>  
+                 <one-to-many class="com.ecommerce.Classes"/>
+          </set>          
+        
+        
+ </class>
+</hibernate-mapping>
